@@ -1,0 +1,106 @@
+from fpdf import FPDF
+
+pdf = FPDF()
+pdf.add_page()
+pdf.set_font("Arial", 'B', 16)
+pdf.cell(200, 10, "8th Grade English Practice Test", ln=True, align='C')
+pdf.set_font("Arial", 'I', 12)
+pdf.cell(200, 10, "Topics: Passive Voice Structure, Uses, Horror Fiction: Foreshadowing, All types of Irony, Sarcasm vs. Irony, The Tell-Tale Heart, The Monkey’s Paw", ln=True, align='C')
+pdf.ln(10)
+
+pdf.set_font("Arial", '', 12)
+pdf.cell(200, 10, "Answer the following questions. Some are open-ended, and others are multiple-choice.", ln=True)
+pdf.ln(10)
+
+pdf.set_font("Arial", 'B', 14)
+pdf.cell(200, 10, "Open-ended Questions", ln=True)
+pdf.ln(10)
+pdf.set_font("Arial", '', 12)
+
+open_ended_questions = [
+    "1. Explain how the passive voice affects the focus of a sentence. Provide an example.",
+    "2. Why is foreshadowing an important literary device in horror stories? Illustrate with an example from 'The Tell-Tale Heart' or 'The Monkey’s Paw'.",
+    "3. Discuss the impact of situational irony in a story. Give an example from any book or film you know.",
+    "4. How can sarcasm be considered a form of verbal irony? Use examples to clarify your answer."
+]
+
+for question in open_ended_questions:
+    pdf.multi_cell(0, 10, question)
+    pdf.ln(5)
+
+pdf.ln(5)
+
+pdf.set_font("Arial", 'B', 14)
+pdf.cell(200, 10, "Multiple-choice Questions", ln=True)
+pdf.ln(10)
+pdf.set_font("Arial", '', 12)
+
+multiple_choice_questions = [
+    ("5. Which of the following is written in the passive voice?",
+     ["A) The artist painted the portrait.", 
+      "B) The portrait was painted by the artist.", 
+      "C) The artist will paint the portrait.", 
+      "D) The portrait is painting the artist."]),
+    
+    ("6. What element in 'The Tell-Tale Heart' serves as foreshadowing?",
+     ["A) The constant mention of the heart.", 
+      "B) The police visit.", 
+      "C) The narrator's calm demeanor.", 
+      "D) The old man’s fear."]),
+
+    ("7. In 'The Monkey’s Paw', what event foreshadows the tragic outcome?",
+     ["A) The granting of the first wish.", 
+      "B) The visit of Sergeant-Major Morris.", 
+      "C) The crash of the machinery.", 
+      "D) The arrival of the stranger."]),
+
+    ("8. Which of the following is an example of dramatic irony?",
+     ["A) A character steps into a dark room not knowing a monster is there, but the audience does.", 
+      "B) A fire station burns down.", 
+      "C) A pilot has a fear of heights.", 
+      "D) A police officer gets a speeding ticket."]),
+
+    ("9. How is sarcasm different from irony?",
+     ["A) Sarcasm is a form of verbal irony intended to mock or convey contempt.", 
+      "B) Irony is always used to mock or convey contempt.", 
+      "C) Sarcasm is always used in written form.", 
+      "D) Irony and sarcasm mean the same thing."]),
+
+    ("10. What type of irony is illustrated when a character says, 'Great! Another rainy day. How wonderful!'?",
+     ["A) Situational irony", 
+      "B) Dramatic irony", 
+      "C) Verbal irony", 
+      "D) Irony of fate."]),
+      
+    ("11. Which sentence uses the passive voice correctly?",
+     ["A) She will bake the cake.", 
+      "B) The cake was baked by her.", 
+      "C) The cake bakes by her.", 
+      "D) She baked the cake."]),
+
+    ("12. What does the beating heart in 'The Tell-Tale Heart' symbolize?",
+     ["A) The narrator's fear", 
+      "B) The old man's life", 
+      "C) The narrator's guilt", 
+      "D) The old man's wealth."]),
+
+    ("13. In 'The Monkey's Paw', who warns the Whites about the paw?",
+     ["A) Mrs. White", 
+      "B) Herbert White", 
+      "C) Sergeant-Major Morris", 
+      "D) The stranger."]),
+
+    ("14. What type of irony involves a discrepancy between what is expected to happen and what actually happens?",
+     ["A) Verbal irony", 
+      "B) Situational irony", 
+      "C) Dramatic irony", 
+      "D) Cosmic irony."])
+]
+
+for question, options in multiple_choice_questions:
+    pdf.multi_cell(0, 10, question)
+    for option in options:
+        pdf.cell(0, 10, option, ln=True)
+    pdf.ln(5)
+
+pdf.output("8th_Grade_English_Practice_Test.pdf")
